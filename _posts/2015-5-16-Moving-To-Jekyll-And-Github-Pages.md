@@ -24,7 +24,7 @@ I suspect some of the issues I am experiencing might have to do with windows 10
 
 I encountered some difficulty enabling syntax highlighting with either rouge or pygments.
 
-Mabye i should put somthing here...
+Mabye i should put something here...
 
 {% highlight java %}
 public static void main();
