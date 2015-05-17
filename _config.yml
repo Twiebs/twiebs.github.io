@@ -35,7 +35,7 @@ url: http://twiebs.github.io
 baseurl: ""
 
 markdown: kramdown
-highlighter: rouge
+highlighter: pygments
 
 # Set the Sass partials directory, as we're using @imports
 sass:
