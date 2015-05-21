@@ -6,28 +6,15 @@ tags:
     - Github
 ---
 
-I've decided to move my blog(that had one post and was made a year ago) to
-Github pages.  So far I really like the new setup who knows, I might actually start
-using it...
+![JekyllLogoImage](/images/jekyll-logo.png)
 
-This is mostly a test post but I am going to share some of the tools I'm using
-to automate the editing process.
+I've decided to migrate my blog (that had one post) from Wordpress, to Jekyll, hosted with Github pages.  This configuration is much better and who knows, i might even start using it...  This is mostly a test post but if your intrested in starting with Jekyll here are some installation tips and tools to help get you started.
 
-##Setting Up Jekyll
-I followed Githubs guide for setting up Jekyll [here](https://help.github.com/articles/using-jekyll-with-pages/)
-This allows for local previewing before making your changes live.
+## Setting Up Jekyll
+Fork Jekyll now.  Especialy if your a windows user.  It will provide a good starting point even if you plan on writing everything yourself. I encoutered a lot of friction attempting to use jekyll with windows; starting from a working project helps locating the source your problems.  I had diffucult esspecialy with syntax highlighting, but as you will see in a moment that has been resolved.  If your running windows i recomend taking a look at [this](http://jekyll-windows.juthilo.com/3-syntax-highlighting/).
 
-In order to simplify this process I created this very simple windows batch script
-to first open [Atom](https://atom.io/), which I am using to edit my posts, then open
-the default web-browser to the URL jekyll will be served to and then finally start
-the jekyll server.
-
-Recently i encountered issues with my computer and needed to do a fresh install.  I decided to try the Windows 10 Insider preview
-I suspect some of the issues I am experiencing might have to do with windows 10
-
-I encountered some difficulty enabling syntax highlighting with either rouge or pygments.
-
-Mabye i should put something here...
+## Writing posts and previewing changes
+If you are creating a fork of Jekyll now the first thing you should do is setup Jekyll on your computer to make use of the live previewing tools.  I am using [Atom](https://atom.io/), to write my posts and fire up my edditing enviroment with the following python script.  Since i dual boot my desktop with Arch Linux and run it exclusivley on my desktop the script accomodates both the windows and linux platform and provides the same functionality.
 
 {% highlight python linenos%}
 __author__ = 'Torin Wiebelt'
@@ -52,6 +39,3 @@ elif platform.system() == "Windows":
     subprocess.call("start http://localhost:4000", shell=True)
     subprocess.call("bundle exec jekyll serve --drafts", shell=True)
 {% endhighlight %}
-
-###Other good Resources
-http://jekyll-windows.juthilo.com/3-syntax-highlighting/
