@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Moving to Jekyll and Github Pages
+tags:
+    - Jekyll
+    - Github
 ---
 
 I've decided to move my blog(that had one post and was made a year ago) to
@@ -26,8 +29,28 @@ I encountered some difficulty enabling syntax highlighting with either rouge or 
 
 Mabye i should put something here...
 
-{% highlight java %}
-public static void main();
+{% highlight python linenos%}
+__author__ = 'Torin Wiebelt'
+# Simple Python Script for automating the jekyll post creating process
+# Includes sytem calls for windows and linux
+
+import platform
+import subprocess
+
+# Paramaters
+jekyllWindowsDir = "D:/workspace/twiebs.github.io"
+jekyllLinuxDir = "~/workspace/twiebs.github.io"
+
+if platform.system() == "Linux":
+    subprocess.call("cd " + jekyllLinuxDir, shell=True)
+    subprocess.call("atom", shell=True)
+    subprocess.call("xdg-open http://localhost:4000", shell=True)
+    subprocess.call("bundle exec jekyll serve --drafts", shell=True)
+elif platform.system() == "Windows":
+    subprocess.call("cd " + jekyllWindowsDir, shell=True)
+    subprocess.call("./atom", shell=True)
+    subprocess.call("start http://localhost:4000", shell=True)
+    subprocess.call("bundle exec jekyll serve --drafts", shell=True)
 {% endhighlight %}
 
 ###Other good Resources

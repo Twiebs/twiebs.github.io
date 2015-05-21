@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Torin Wiebelt: Syntactic Sorcerer
+I'm a self-taught programmer developing and exploring multiple programing applications.  I have worked on many projects in different areas but mostly specialize in low-level game engine development.  
 
-### More Information
+<!--- The bridge between hardware and software is my natural habitat --->
 
-I typically like to do things, followed by some stuff.
+## Current Projects
+
+## Projects
 
 ### Contact me
-
 [email@domain.com](mailto:email@domain.com)
