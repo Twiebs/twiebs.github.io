@@ -4,7 +4,9 @@ title: Projects
 permalink: /projects/
 ---
 
-##Current Projects
+#Current Projects
+
+------------------------------
 
 ###LLVM Toy Language
 
@@ -14,7 +16,10 @@ I have been working on an experimental toy language compiler frontend that targe
 
 - Multi-threaded compilation
 - No header files.  Dependices are resolved after the AST has been fully parsed.
-[Github](https://github.com/Twiebs/LLVMLang)
+
+[Github Repositiory](https://github.com/Twiebs/LLVMLang)
+
+-----------------------------
 
 ###Raptor Game Engine
 
@@ -33,6 +38,8 @@ The engine currently uses OpenGL for rendering and bullet for physics.
 
 
 [Github Repository](https://github.com/Twiebs/Raptor)
+
+-------------------------
 
 #Older Projects
 
