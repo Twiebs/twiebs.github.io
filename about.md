@@ -4,13 +4,9 @@ title: About
 permalink: /about/
 ---
 
-I'm a self-taught programmer developing and exploring multiple programing applications.  I have worked on many projects in different areas but mostly specialize in low-level game engine development.  
+My name is Torin Wiebelt.  I am primarily a C++ programmer.  I taught myself C when i was twelve.  My current interests are Game Engine Programming and Compiler design.  Check out my projects page.
+
 
 <!--- The bridge between hardware and software is my natural habitat --->
-
-## Current Projects
-
-## Projects
-
 ### Contact me
-[email@domain.com](mailto:email@domain.com)
+[torinwiebelt@gmail.com](mailto:torinwiebelt@gmail.com)
