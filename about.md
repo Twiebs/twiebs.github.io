@@ -12,6 +12,7 @@ My name is Torin Wiebelt.  I am a 21 year old C++ programmer, also experienced i
 ---------------------------
 
 > **Skills**
+
 - Experienced C++, Java, C#, Python Programmer
 - Experience with CMake Build System
 - Experience Maintaing Git Repositories
