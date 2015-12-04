@@ -12,10 +12,12 @@ permalink: /projects/
 
 I have been working on an experimental toy language compiler frontend that targets llvm.  The language is not designed for writing real software, it is for experimental purposes only.  
 
-####Implemented Features
+####Noteable Features:
 
 - Multi-threaded compilation
 - No header files.  Dependices are resolved after the AST has been fully parsed.
+- Overloadable functions at global scope or locally within a another function
+
 
 [Github Repositiory](https://github.com/Twiebs/LLVMLang)
 
@@ -26,16 +28,17 @@ I have been working on an experimental toy language compiler frontend that targe
 Raptor is an OpenSource Hobby Game Framework and Engine writen in C++.
 The engine currently uses OpenGL for rendering and bullet for physics.  
 
-####Implemented Features:
+####Noteable Features:
 
 - Multi-threaded task scheduling and execution
 - OpenGL Renderer
   - Defered Renderer
+  - Ambient Occlusion
 - Entity Management System
 - Asset Management System
   - Asset Hot-reloading
   - Asset Pack-files
-
+- Procedural Generation Tools
 
 [Github Repository](https://github.com/Twiebs/Raptor)
 
