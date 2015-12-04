@@ -34,7 +34,7 @@ url: http://twiebs.github.io
 # then add in the base1url here, like this: "/repository-name"
 baseurl: ""
 
-markdown: kramdown
+markdown: Redcarpet 
 highlighter: pygments
 
 # Set the Sass partials directory, as we're using @imports
