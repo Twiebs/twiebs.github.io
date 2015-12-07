@@ -8,14 +8,14 @@ permalink: /projects/
 
 ------------------------------
 
-> ###LLVM Toy Language
-I have been working on an experimental toy language compiler frontend that targets llvm.  The language is not designed for writing real software, it is for experimental purposes only.  
+> ###Experimental LLVM Toy Language
+> I have been working on an experimental toy language compiler frontend that targets llvm. I started the project to statisfy my curiosity of the implemtation programming languages.  The syntax and semantics of the language are heavily inspired by Jonathan Blow's JAI, which is a brillant upcoming language attempting to be a replacement for C++ in the games industry.  
 
->####Noteable Features:
+>####Noteable Implemented Features:
 
->- Multi-threaded compilation
-- No header files.  Dependices are resolved after the AST has been fully parsed.
-- Overloadable functions at global scope or locally within a another function
+> - Multi-threaded compilation
+> - No header files.  Dependices are resolved after the AST has been fully parsed.
+> - Overloadable functions at global scope or locally within a another function
 
 
 >[Github Repositiory](https://github.com/Twiebs/LLVMLang)
@@ -24,8 +24,7 @@ I have been working on an experimental toy language compiler frontend that targe
 
 >###Raptor Game Engine
 
->Raptor is an OpenSource Hobby Game Framework and Engine writen in C++.
-The engine currently uses OpenGL for rendering and bullet for physics.  
+> Raptor is an OpenSource Hobby Game Framework and Engine writen in C++.  The renderer is written in OpenGL
 
 >####Noteable Features:
 
@@ -59,7 +58,12 @@ The engine currently uses OpenGL for rendering and bullet for physics.
 
 >[Entry Link](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
 
-###GDXJam
+--------------
+
+> ###Orion
+
+> Orion is a 2D space strategy game with squad based mechanics.  The project was created for an aproximatly 1 month jam project but was never fully compleated.  The game was written using LibGDX and relied heavily on LibGDX-ai for the squad based mechanics.  The game had squad based movement, combat, and resource gathering capabilities.  Procedural generation was used to create the levels and lay out the asteroids used in resource collection.
+
 
 
 ###Inhabited
