@@ -65,6 +65,8 @@ permalink: /projects/
 > Orion is a 2D space strategy game with squad based mechanics.  The project was created for an aproximatly 1 month jam project but was never fully compleated.  The game was written using LibGDX and relied heavily on LibGDX-ai for the squad based mechanics.  The game had squad based movement, combat, and resource gathering capabilities.  Procedural generation was used to create the levels and lay out the asteroids used in resource collection.
 
 
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/ODgvU" data-context="false"><a href="//imgur.com/a/ODgvU">Orion</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ###Inhabited
 
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/AeVCp" data-context="false"><a href="//imgur.com/a/AeVCp">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
