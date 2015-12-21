@@ -3,3 +3,6 @@ _site
 .jekyll
 .bundle
 .sass-cache
+
+*.swp
+

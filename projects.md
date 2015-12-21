@@ -8,7 +8,12 @@ permalink: /projects/
 
 ------------------------------
 
-> ###Experimental LLVM Toy Language
+> ###Unnamed Kernal and OS
+[12/2015 - Present]
+
+--------------------
+
+> ###Unnamed Experimental LLVM Toy Language
 [06/2015 - Present]
 
 > I have been working on an experimental toy language compiler frontend that targets llvm. I started the project to statisfy my curiosity of the implemtation programming languages.  The syntax and semantics of the language are heavily inspired by Jonathan Blow's JAI, which is a brillant upcoming language attempting to be a replacement for C++ in the games industry.  
@@ -42,24 +47,50 @@ permalink: /projects/
 
 >[Github Repository](https://github.com/Twiebs/Raptor)
 
--------------------------
+-----------------
 
 #Old Projects
 
->##Ludum Dare 33: You are the monster
+>##Game Jams
+
+> > Ludum Dare 34
+[12/11/15 - 12/13/15]
+
+> > Title: Ascention
+
+> > Tools Used:
+  Unity,
+  Krita,
+  Gimp,
+  Audacity,
+  AudioTool,
+
+
+
+>> [Entry Link](http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=5078)
+
+> > [Github Repository](https://github.com/Twiebs/LD34)
+
+> -------------
+
+> > Ludum Dare 33
 [08/21/15 - 08/23/15]
 
-> Tools Used:
-  - Unity
-  - Blender
-  - Photoshop
-  - Audacity
+> > Title: Manhattan Monstrosity
+
+> > Tools Used:
+  Unity,
+  Blender,
+  Photoshop,
+  Audacity
+
+> > [Entry Link](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
+
+> > [Github Repository](https://github.com/Twiebs/LD33/)
 
 > <blockquote class="imgur-embed-pub" lang="en" data-id="a/CgVSb" data-context="false"><a href="//imgur.com/a/CgVSb">LD33</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
-> [Entry Link](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
 
-> [Github Repository](https://github.com/Twiebs/LD33/)
 
 --------------
 
