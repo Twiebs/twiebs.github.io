@@ -8,12 +8,16 @@ permalink: /projects/
 
 ------------------------------
 
-> ###Unnamed Kernal and OS
+> ### TJW-OS
 [12/2015 - Present]
+
+> TJW-OS is a kernel and operating system implemented in C and x86 assembly using the NASM assembler.  It is written for a x86 32bit machine. 
+
+> [Github Repository](http://github.com/Twiebs/tjw-os)
 
 --------------------
 
-> ###Unnamed Experimental LLVM Toy Language
+> ###Unnamed Experimental LLVM Language 
 [06/2015 - Present]
 
 > I have been working on an experimental toy language compiler frontend that targets llvm. I started the project to statisfy my curiosity of the implemtation programming languages.  The syntax and semantics of the language are heavily inspired by Jonathan Blow's JAI, which is a brillant upcoming language attempting to be a replacement for C++ in the games industry.  
@@ -56,6 +60,8 @@ permalink: /projects/
 > > Ludum Dare 34
 [12/11/15 - 12/13/15]
 
+>> Theme: Growing or Only Two Buttons
+
 > > Title: Ascention
 
 > > Tools Used:
@@ -75,6 +81,8 @@ permalink: /projects/
 
 > > Ludum Dare 33
 [08/21/15 - 08/23/15]
+
+>> Theme: You are the monster
 
 > > Title: Manhattan Monstrosity
 
