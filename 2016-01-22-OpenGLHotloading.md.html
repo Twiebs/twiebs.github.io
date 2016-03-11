@@ -1,0 +1,15 @@
+<!DOCTYPE html> <html lang="en-us"> <meta charset="UTF-8"> <title>test</title><meta name="description" content="foo"><link rel="stylesheet" type="text/css" href="style.css"><body><div class="page_header"><div><h1>Torin Wiebelt</h1><h3>LATEST POSTS</h3></div><div><h2>Home</h2><h2>Projects</h2><h2>About</h2></div></div><div style="height:160px;"></div><div class="content"><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+</h1><p>One of the important features that I wanted when creating this new iteration of my game engine
+Was</p><p>the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
+as</p><p>possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplished
+OpenGL</p><p>function hotloading in the Venom game engine.
+</p><h1>C Preprocessor Metaprograming
+</h1><p>The problem is that when the dll containing the game code is realoaded after compilation functions that
+exist</p><p>in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engine
+using</p><p>the same system that the game code uses to obtain them.
+</p><p>The opengl procedures are defined in the file opengl_procedures.h
+This</p><p>is a small example of what that file looks like
+</p><ul><li>This is a test list to see what happens when i add it
+</li><li>This could potential fuck it up tremendously
+</li><li>Here is another item
+</li></ul></div><div class="seperator"></div></body></html>

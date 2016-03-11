@@ -1,0 +1,72 @@
+<!DOCTYPE html> <html lang="en-us"> <meta charset="UTF-8"> <title>Torin Wiebelt</title><meta name="description" content="Torin Wiebelt's awesome blog and portfolio"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="/index.html">Home</a><a class="navbar-item" href="/about.html">About</a></div></nav><div class="page-header"><h1>Torin Wiebelt</h1></div><div class="content"><h1>Generating HTML with C++
+</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
+however</p><p>, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
+I</p><p>decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
+data</p><p>source to be used in the HTML generation phase.
+</p><p>Here is an example of how the code generation for this website looks
+</p><div style="background-color:rgba(34,34,34,1);color:rgba(200,200,200,1);font-size:12px;padding:10px;"> <pre>...
+
+ImWeb::Directory("site");
+ImWeb::BeginDocument("Torin Wiebelt", "Torin Wiebelt's awesome blog and portfolio");
+ImWeb::Filename("index.html");
+ImWeb::StyleSheet("style.css");
+ImWeb::BeginBody();
+SiteHeader();
+
+DIR *directory = opendir("posts");
+if (directory != NULL) {
+    struct dirent *file;
+    char temp[1024];
+    char *write = temp;
+    while ((file = readdir(directory))) {
+        if (strcmp("..", file->d_name) &&
+            strcmp(".", file->d_name)) {
+
+            memcpy_lit_inc_ptr(write, "posts/");
+            memcpy_and_increment(write, file->d_name, sizeof(file->d_name));
+            write[0] = 0;
+            char *data = ReadFileIntoMemory(temp);
+            ImWeb::BeginDiv("content");
+            //ImWeb::Heading(file->d_name, 1);
+            ImWeb::Markdown(data);
+            ImWeb::EndDiv();
+            ImWeb::BeginDiv("seperator");
+            ImWeb::EndDiv();
+            free(data);
+            memset(temp, 0, 512);
+            write = temp;
+        }
+    }
+    closedir(directory);
+}
+ImWeb::EndBody();
+ImWeb::EndDocument();
+
+...
+
+</div></pre><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
+</p></div><div class="seperator"></div><div class="content"><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+</h1><p>One of the important features that I wanted when creating this new iteration of my game engine
+Was</p><p>the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
+as</p><p>possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplished
+OpenGL</p><p>function hotloading in the Venom game engine.
+</p><h1>C Preprocessor Metaprograming
+</h1><p>The problem is that when the dll containing the game code is realoaded after compilation functions that
+exist</p><p>in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engine
+using</p><p>the same system that the game code uses to obtain them.
+</p><p>The opengl procedures are defined in the file opengl_procedures.h
+This</p><p>is a small example of what that file looks like
+</p><ul><li>This is a test list to see what happens when i add it
+</li><li>This could potential fuck it up tremendously
+</li><li>Here is another item
+</li></ul></div><div class="seperator"></div><div class="content"><h1>Writing a new Game Engine
+</h1><p>A year ago I started writing a 3D game engine.  Today I started writing a new 3D game engine from scratch using none of the code from the previous incardination.
+This</p><p>is because the original engine which I had dubbed "Raptor" was written to be very modular and generic.
+The</p><p>problem: too much effort was expended on organizing the code rather than solving the difficult technical problems involved with 3D game engine programming.
+Another</p><p>issue with the initial engine was that there was no defined goal of what exactly I wanted to achieve with the project.
+At</p><p>one point I had written a level editor without any intent to use it just though that it would be cool.
+</p><h1>What was wrong
+</h1><ul><li>templates slowed down compile times
+</li><li>focused on design rather than solving problems
+</li><li>tried to be very generic rather than attack specific problems directly
+</li></ul></div><div class="seperator"></div></body></html>

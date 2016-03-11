@@ -1,0 +1,89 @@
+body
+{
+    background-color : #E8E8E8;
+    font-family:"Lato",Calibri,Arial,sans-serif;
+    font-size:16px;
+    color:rgba(34,34,34,0.8);
+    margin : 0;
+}
+
+.navbar
+{
+    position : fixed;
+    background-color : rgba(54,54,54,1);
+    left : 0;
+    top  : 0;
+    width : 100%;
+    min-height : 3.0rem;
+    margin : 0;
+    margin-bottom : 3.0rem;
+    padding : 0;
+    box-shadow : 0 0 0 0, 0 6px 12px rgba(34, 34, 34, 0.3);
+}
+
+.navbar-item-container
+{
+    margin-top : 10px;
+    text-align : center;
+}
+
+.navbar-item
+{
+    position : relative;
+    color : #FFF;
+    font-size: 1.4rem;
+    text-transform  : uppercase;
+    text-decoration : none;
+    pad-top : 45px;
+    margin-right : 2.5rem;
+}
+
+.page-header
+{
+    left : 0;
+    padding-top    : 3.0rem;
+    padding-bottom : 0.5rem;
+    margin-bottom  : 16px;
+    background-color : rgba(54,54,54,1);
+    text-align : center;
+    vertical-align : middle;
+    color : #FFF;
+    
+}
+
+.content
+{
+    background-color : #FFFFFF;
+    max-width : 1200px;
+    margin : auto;
+    top : 10px;
+    padding : 40px;
+    box-shadow : 0 0 0 0, 0 12px 24px rgba(34, 34, 34, 0.2);
+}
+
+.page_header
+{
+    position : absolute;
+    padding : 0;
+    left : 0;
+    top : 0;
+    width : 100vw;
+    min-height : 150px;
+    max-height : 150px;
+    margin : auto;
+    background-image : url("abstract.jpg");
+    background-size  : cover;
+    box-shadow : 0 0 0 0, 0 6px 12px rgba(34, 34, 34, 0.1);
+    text-align : center;
+    vertical-align : middle;
+
+    color : #FFF;
+    text-shadow : 1px 1px 4px rgba(34,34,34,0.6);
+    font-size : 24px;
+    font-family:"Lato",Calibri,Arial,sans-serif;
+}
+
+.seperator
+{
+    height : 15px;
+}
