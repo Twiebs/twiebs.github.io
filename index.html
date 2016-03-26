@@ -1,36 +1,39 @@
-<!DOCTYPE html> <html lang="en-us"> <meta charset="UTF-8"> <title>Torin Wiebelt's Blog</title><meta name="description" content="Torin Wiebelt's awesome blog and portfolio"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="/index.html">Home</a><a class="navbar-item" href="/about.html">About</a><a class="navbar-item" href="/projects.html">Projects</a></div></nav><div class="page-header"><h1>Torin Wiebelt</h1></div><div class="content"><h1>Generating HTML with C++
-</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
-however</p><p>, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
-I</p><p>decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
-data</p><p>source to be used in the HTML generation phase.
-</p><p>Here is an example of how the code generation for this website looks
-</p><div style="background-color:rgba(34,34,34,1);color:rgba(200,200,200,1);font-size:12px;padding:10px;"> <pre>...
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><title>Torin Wiebelt's Blog</title><meta name="description" content="Torin wiebelts awesome blog and portfolio"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="index.html">Posts</a><a class="navbar-item" href="projects.html">Projects</a><a class="navbar-item" href="about.html">About</a><a class="navbar-item" href="archive.html">Archive</a></div></nav><div class="page-header"><h1>Recent Posts</h1></div><div class="content"><h1>Generating HTML with C++
 
-ImWeb::Directory("site");
-ImWeb::BeginDocument("Torin Wiebelt", "Torin Wiebelt's awesome blog and portfolio");
-ImWeb::Filename("index.html");
-ImWeb::StyleSheet("style.css");
+</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
+however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
+I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
+data source to be used in the HTML generation phase.
+
+</p><p>Here is an example of how the code generation for this website looks
+
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>...
+
+ImWeb::Directory(<span style="color:#2ecc71;">"site"</span>);
+ImWeb::BeginDocument(<span style="color:#2ecc71;">"Torin Wiebelt"</span>, <span style="color:#2ecc71;">"Torin Wiebelt's awesome blog and portfolio"</span>);
+ImWeb::Filename(<span style="color:#2ecc71;">"index.html"</span>);
+ImWeb::StyleSheet(<span style="color:#2ecc71;">"style.css"</span>);
 ImWeb::BeginBody();
 SiteHeader();
 
-DIR *directory = opendir("posts");
-if (directory != NULL) {
-    struct dirent *file;
-    char temp[1024];
-    char *write = temp;
-    while ((file = readdir(directory))) {
-        if (strcmp("..", file->d_name) &&
-            strcmp(".", file->d_name)) {
+<span style="color:#f1c40f;">DIR</span> *directory = opendir(<span style="color:#2ecc71;">"posts"</span>);
+<span style="color:#3498db;">if</span> (directory != NULL) {
+    <span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">dirent</span> *file;
+    <span style="color:#f1c40f;">char</span> temp[1024];
+    <span style="color:#f1c40f;">char</span> *write = temp;
+    <span style="color:#3498db;">while</span> ((file = readdir(directory))) {
+        <span style="color:#3498db;">if</span> (strcmp(<span style="color:#2ecc71;">".."</span>, file->d_name) &&
+            strcmp(<span style="color:#2ecc71;">"."</span>, file->d_name)) {
 
-            memcpy_lit_inc_ptr(write, "posts/");
-            memcpy_and_increment(write, file->d_name, sizeof(file->d_name));
+            memcpy_lit_inc_ptr(write, <span style="color:#2ecc71;">"posts/"</span>);
+            memcpy_and_increment(write, file->d_name, <span style="color:#3498db;">sizeof</span>(file->d_name));
             write[0] = 0;
-            char *data = ReadFileIntoMemory(temp);
-            ImWeb::BeginDiv("content");
-            //ImWeb::Heading(file->d_name, 1);
+            <span style="color:#f1c40f;">char</span> *data = ReadFileIntoMemory(temp);
+            ImWeb::BeginDiv(<span style="color:#2ecc71;">"content"</span>);
+            <span style="color:#34495e;">//ImWeb::Heading(file->d_name, 1);</span>
             ImWeb::Markdown(data);
             ImWeb::EndDiv();
-            ImWeb::BeginDiv("seperator");
+            ImWeb::BeginDiv(<span style="color:#2ecc71;">"seperator"</span>);
             ImWeb::EndDiv();
             free(data);
             memset(temp, 0, 512);
@@ -44,29 +47,97 @@ ImWeb::EndDocument();
 
 ...
 
-</div></pre><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
-</p></div><div class="seperator"></div><div class="content"><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+
+</pre></div><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
+And stuf of that nature i beleive that the system for stopping code blocks is currently broken
+</p></div><div class="seperator"></div><div class="content"><p>!title(Hotloading OpenGL Procedures with C preprocessor metaprograming)
+</p><p>!date(2016-01-22)
+
+</p><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+
 </h1><p>One of the important features that I wanted when creating this new iteration of my game engine
-Was</p><p>the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
-as</p><p>possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplished
-OpenGL</p><p>function hotloading in the Venom game engine.
+Was the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
+as possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplished
+OpenGL function hotloading in the Venom game engine.
+
 </p><h1>C Preprocessor Metaprograming
+
 </h1><p>The problem is that when the dll containing the game code is realoaded after compilation functions that
-exist</p><p>in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engine
-using</p><p>the same system that the game code uses to obtain them.
+exist in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engine
+using the same system that the game code uses to obtain them.
+
 </p><p>The opengl procedures are defined in the file opengl_procedures.h
-This</p><p>is a small example of what that file looks like
-</p><ul><li>This is a test list to see what happens when i add it
-</li><li>This could potential fuck it up tremendously
-</li><li>Here is another item
-</li></ul></div><div class="seperator"></div><div class="content"><h1>Writing a new Game Engine
+This is a small example of what that file looks like
+
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
+...
+
+_(PFNGLGENTEXTURESPROC, glGenTextures)
+_(PFNGLTEXSTORAGE2DPROC, glTexStorage2D)
+_(PFNGLTEXSTORAGE3DPROC, glTexStorage3D)
+_(PFNGLTEXIMAGE2DPROC, glTexImage2D)
+_(PFNGLTEXIMAGE3DPROC, glTexImage3D)
+_(PFNGLTEXSUBIMAGE2DPROC, glTexSubImage2D)
+_(PFNGLTEXSUBIMAGE3DPROC, glTexSubImage3D)
+
+...
+
+
+</pre></div><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
+they are realevant
+
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">EngineAPI</span>
+{
+<span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#f1c40f;">sig</span> name;
+<span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
+<span style="color:#e74c3c;">#undef</span> _
+};
+
+
+</pre></div><p>One very important facet of this system is that there is no differentation between how the
+OpenGL procedures are called in debug and release builds.  This is acomplished by pasting the OpenGL
+procedure list as global variables in the game module
+
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
+<span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#3498db;">static</span> <span style="color:#f1c40f;">sig</span> name;
+<span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
+<span style="color:#e74c3c;">#undef</span> _
+
+<span style="color:#3498db;">extern</span> <span style="color:#2ecc71;">"C"</span>
+<span style="color:#f1c40f;">void</span> on_module_load(<span style="color:#f1c40f;">EngineAPI</span> *api)
+{
+<span style="color:#e74c3c;">#define</span> _(sig,name) name = api-><span style="color:#e74c3c;">##name;</span>
+<span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
+<span style="color:#e74c3c;">#undef</span> _
+}
+
+</pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
+within the game module to the procedures that have been loaded from the platform layers coresponding dynamic
+OpenGL library.
+</p></div><div class="seperator"></div><div class="content"><h1>Writing a new Game Engine
 </h1><p>A year ago I started writing a 3D game engine.  Today I started writing a new 3D game engine from scratch using none of the code from the previous incardination.
-This</p><p>is because the original engine which I had dubbed "Raptor" was written to be very modular and generic.
-The</p><p>problem: too much effort was expended on organizing the code rather than solving the difficult technical problems involved with 3D game engine programming.
-Another</p><p>issue with the initial engine was that there was no defined goal of what exactly I wanted to achieve with the project.
-At</p><p>one point I had written a level editor without any intent to use it just though that it would be cool.
-</p><h1>What was wrong
-</h1><ul><li>templates slowed down compile times
-</li><li>focused on design rather than solving problems
-</li><li>tried to be very generic rather than attack specific problems directly
+This is because the original engine which I had dubbed "Raptor" was written to be very modular and generic.
+The problem: too much effort was expended on organizing the code rather than solving the difficult technical problems involved with 3D game engine programming.
+Another issue with the initial engine was that there was no defined goal of what exactly I wanted to achieve with the project.
+At one point I had written a level editor without any intent to use it just though that it would be cool.
+</p><h2>What was wrong
+</h2><ul><li>C++ templates slowed down compile times
+</li><li>Focused on too much on design and architecture rather than solving problems
+</li><li>Written to be very generic rather than attack specific problems directly
+</li></ul><p>The goals I have going into this project are more clearly defined then "just because".
+Although the primary reasons for creating this engine are to state my curiosity about all aspects of game engine technologies I intend to work towards a tech demo with gameplay.
+The plan is to create a small RPG style engine with a 3rd person combat system.
+</p><h2>The Plan
+</h2><ul><li>Procedurally Generated Terrain
+</li><li>Collision Detection / Physics Engine
+</li><li>OpenGL / Possibly Vulcan renderer
+</li><ul><li>primary deferred rendering
+</li><li>Cascaded shadow maps for large outdoor scenes
+</li><li>SSAO
+</li><li>secondary forward pass for transparency
+</li><li>Procedural Animation system
+</li></ul><li>3rd Person player controls with RPG elements
+</li><li>Runtime hot loading of C++ dlls
+</li><li>Asset hot reloading
+</li><li>Audio mixer
 </li></ul></div><div class="seperator"></div></body></html>

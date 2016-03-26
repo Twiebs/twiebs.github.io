@@ -5,6 +5,7 @@ body
     font-size:16px;
     color:rgba(34,34,34,0.8);
     margin : 0;
+    text-align : center;
 }
 
 .navbar
@@ -59,6 +60,7 @@ body
     top : 10px;
     padding : 40px;
     box-shadow : 0 0 0 0, 0 12px 24px rgba(34, 34, 34, 0.2);
+    text-align : left;
 }
 
 .page_header

@@ -1,36 +1,39 @@
-<!DOCTYPE html> <html lang="en-us"> <meta charset="UTF-8"> <title>03-10-16</title><meta name="description" content="Torin Wiebelt's Blog"><link rel="stylesheet" type="text/css" href="style.css"><body><div class="page-header"><h1>03-10-16</h1></div><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="/index.html">Home</a><a class="navbar-item" href="/about.html">About</a><a class="navbar-item" href="/projects.html">Projects</a></div></nav><div class="content"><h1>Generating HTML with C++
-</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
-however</p><p>, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
-I</p><p>decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
-data</p><p>source to be used in the HTML generation phase.
-</p><p>Here is an example of how the code generation for this website looks
-</p><div style="background-color:rgba(34,34,34,1);color:rgba(200,200,200,1);font-size:12px;padding:10px;"> <pre>...
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><title>03-10-16</title><meta name="description" content="Torin wiebelts blog"><link rel="stylesheet" type="text/css" href="style.css"><body><div class="page-header"><h1>03-10-16</h1></div><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="index.html">Posts</a><a class="navbar-item" href="projects.html">Projects</a><a class="navbar-item" href="about.html">About</a><a class="navbar-item" href="archive.html">Archive</a></div></nav><div class="content"><h1>Generating HTML with C++
 
-ImWeb::Directory("site");
-ImWeb::BeginDocument("Torin Wiebelt", "Torin Wiebelt's awesome blog and portfolio");
-ImWeb::Filename("index.html");
-ImWeb::StyleSheet("style.css");
+</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
+however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
+I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
+data source to be used in the HTML generation phase.
+
+</p><p>Here is an example of how the code generation for this website looks
+
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>...
+
+ImWeb::Directory(<span style="color:#2ecc71;">"site"</span>);
+ImWeb::BeginDocument(<span style="color:#2ecc71;">"Torin Wiebelt"</span>, <span style="color:#2ecc71;">"Torin Wiebelt's awesome blog and portfolio"</span>);
+ImWeb::Filename(<span style="color:#2ecc71;">"index.html"</span>);
+ImWeb::StyleSheet(<span style="color:#2ecc71;">"style.css"</span>);
 ImWeb::BeginBody();
 SiteHeader();
 
-DIR *directory = opendir("posts");
-if (directory != NULL) {
-    struct dirent *file;
-    char temp[1024];
-    char *write = temp;
-    while ((file = readdir(directory))) {
-        if (strcmp("..", file->d_name) &&
-            strcmp(".", file->d_name)) {
+<span style="color:#f1c40f;">DIR</span> *directory = opendir(<span style="color:#2ecc71;">"posts"</span>);
+<span style="color:#3498db;">if</span> (directory != NULL) {
+    <span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">dirent</span> *file;
+    <span style="color:#f1c40f;">char</span> temp[1024];
+    <span style="color:#f1c40f;">char</span> *write = temp;
+    <span style="color:#3498db;">while</span> ((file = readdir(directory))) {
+        <span style="color:#3498db;">if</span> (strcmp(<span style="color:#2ecc71;">".."</span>, file->d_name) &&
+            strcmp(<span style="color:#2ecc71;">"."</span>, file->d_name)) {
 
-            memcpy_lit_inc_ptr(write, "posts/");
-            memcpy_and_increment(write, file->d_name, sizeof(file->d_name));
+            memcpy_lit_inc_ptr(write, <span style="color:#2ecc71;">"posts/"</span>);
+            memcpy_and_increment(write, file->d_name, <span style="color:#3498db;">sizeof</span>(file->d_name));
             write[0] = 0;
-            char *data = ReadFileIntoMemory(temp);
-            ImWeb::BeginDiv("content");
-            //ImWeb::Heading(file->d_name, 1);
+            <span style="color:#f1c40f;">char</span> *data = ReadFileIntoMemory(temp);
+            ImWeb::BeginDiv(<span style="color:#2ecc71;">"content"</span>);
+            <span style="color:#34495e;">//ImWeb::Heading(file->d_name, 1);</span>
             ImWeb::Markdown(data);
             ImWeb::EndDiv();
-            ImWeb::BeginDiv("seperator");
+            ImWeb::BeginDiv(<span style="color:#2ecc71;">"seperator"</span>);
             ImWeb::EndDiv();
             free(data);
             memset(temp, 0, 512);
@@ -44,5 +47,7 @@ ImWeb::EndDocument();
 
 ...
 
-</div></pre><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
+
+</pre></div><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
+And stuf of that nature i beleive that the system for stopping code blocks is currently broken
 </p></div><div class="seperator"></div></body></html>
