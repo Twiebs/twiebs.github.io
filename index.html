@@ -22,7 +22,7 @@ calls.  This system allows for maximal flexibility such as generating entire pos
 a dozen lines of code.  Most of the procedures in the site-generator are provide both a format version and a pointer and length 
 version for maximal flexibility 
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
 sg_fmt_p(<span style="color:#2ecc71;">"paragraph with %s"</span>, <span style="color:#2ecc71;">"stuff"</span>);
 sg_fmt_a(<span style="color:#2ecc71;">"%s.html"</span>, <span style="color:#2ecc71;">"my_page"</span>);
 
@@ -31,7 +31,7 @@ sg_fmt_set_next_id(<span style="color:#2ecc71;">"id%d"</span>, 9);
 sg_begin_div();
 <span style="color:#34495e;">//...</span>
 sg_end_div();
-</pre></div><p>Both sg_fmt_set_next_class and sg_fmt_set_next_id apply to ALL other procedures in the utility.  This 
+</pre></div></code><p>Both sg_fmt_set_next_class and sg_fmt_set_next_id apply to ALL other procedures in the utility.  This 
 allows a simple way to proceduraly set the classname and id of html elements.
 
 </p><h2>In Practice Examples
@@ -39,7 +39,7 @@ allows a simple way to proceduraly set the classname and id of html elements.
 </h2><p>Here are some examples of the power and flexibility this tool provides for data-driven web development
 This is the entire routine that generates the homepage of this blog
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg::set_output_directory(<span style="color:#2ecc71;">"site"</span>);
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg::set_output_directory(<span style="color:#2ecc71;">"site"</span>);
 sg::begin_document();
 sg::add_stylesheet(<span style="color:#2ecc71;">"style.css"</span>);
 sg::fmt_h(1, <span style="color:#2ecc71;">"Current Posts"</span>);
@@ -51,11 +51,11 @@ foreach_file_in_directory(<span style="color:#2ecc71;">"posts"</span>, [](<span 
 });
 sg::end_document();
 
-</pre></div><p>This routine generates a responsive photogallery by simply iterating over photos in a directory
+</pre></div></code><p>This routine generates a responsive photogallery by simply iterating over photos in a directory
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>kate_wiebeltstuff
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>kate_wiebeltstuff
 
-</pre></div></div><div class="content"><p>!title</p><p>Hotloading OpenGL Procedures with C preprocessor metaprograming</p><p>!date</p><p>2016-01-22</p><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+</pre></div></code></div><div class="content"><p>!title</p><p>Hotloading OpenGL Procedures with C preprocessor metaprograming</p><p>!date</p><p>2016-01-22</p><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
 
 </h1><p>One of the important features that I wanted when creating this new iteration of my game engine
 Was the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
@@ -71,7 +71,7 @@ using the same system that the game code uses to obtain them.
 </p><p>The opengl procedures are defined in the file opengl_procedures.h
 This is a small example of what that file looks like
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
 ...
 
 _(PFNGLGENTEXTURESPROC, glGenTextures)
@@ -85,10 +85,10 @@ _(PFNGLTEXSUBIMAGE3DPROC, glTexSubImage3D)
 ...
 
 
-</pre></div><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
+</pre></div></code><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
 they are realevant
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">EngineAPI</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">EngineAPI</span>
 {
 <span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#f1c40f;">sig</span> name;
 <span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
@@ -96,11 +96,11 @@ they are realevant
 };
 
 
-</pre></div><p>One very important facet of this system is that there is no differentation between how the
+</pre></div></code><p>One very important facet of this system is that there is no differentation between how the
 OpenGL procedures are called in debug and release builds.  This is acomplished by pasting the OpenGL
 procedure list as global variables in the game module
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
 <span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#3498db;">static</span> <span style="color:#f1c40f;">sig</span> name;
 <span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
 <span style="color:#e74c3c;">#undef</span> _
@@ -113,7 +113,7 @@ procedure list as global variables in the game module
 <span style="color:#e74c3c;">#undef</span> _
 }
 
-</pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
+</pre></div></code><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
 within the game module to the procedures that have been loaded from the platform layers coresponding dynamic
 OpenGL library.
 </p></div><div class="content"><h1>Writing a new Game Engine

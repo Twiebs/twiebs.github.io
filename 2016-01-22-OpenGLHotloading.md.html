@@ -14,7 +14,7 @@ using the same system that the game code uses to obtain them.
 </p><p>The opengl procedures are defined in the file opengl_procedures.h
 This is a small example of what that file looks like
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
 ...
 
 _(PFNGLGENTEXTURESPROC, glGenTextures)
@@ -28,10 +28,10 @@ _(PFNGLTEXSUBIMAGE3DPROC, glTexSubImage3D)
 ...
 
 
-</pre></div><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
+</pre></div></code><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
 they are realevant
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">EngineAPI</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">EngineAPI</span>
 {
 <span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#f1c40f;">sig</span> name;
 <span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
@@ -39,11 +39,11 @@ they are realevant
 };
 
 
-</pre></div><p>One very important facet of this system is that there is no differentation between how the
+</pre></div></code><p>One very important facet of this system is that there is no differentation between how the
 OpenGL procedures are called in debug and release builds.  This is acomplished by pasting the OpenGL
 procedure list as global variables in the game module
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
+</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
 <span style="color:#e74c3c;">#define</span> _(sig, name) <span style="color:#3498db;">static</span> <span style="color:#f1c40f;">sig</span> name;
 <span style="color:#e74c3c;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
 <span style="color:#e74c3c;">#undef</span> _
@@ -56,7 +56,7 @@ procedure list as global variables in the game module
 <span style="color:#e74c3c;">#undef</span> _
 }
 
-</pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
+</pre></div></code><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
 within the game module to the procedures that have been loaded from the platform layers coresponding dynamic
 OpenGL library.
 </p></div></body></html>
