@@ -1,59 +1,61 @@
-<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Torin Wiebelt's Blog</title><meta name="description" content="Torin wiebelts awesome blog and portfolio"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><div class="navbar-item-container"><a class="navbar-item" href="index.html">Posts</a><a class="navbar-item" href="projects.html">Projects</a><a class="navbar-item" href="about.html">About</a><a class="navbar-item" href="archive.html">Archive</a></div></nav><div class="page-header"><h1>Recent Posts</h1></div><div class="content"><h1>Generating HTML with C++
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Torin Wiebelt's Blog</title><meta name="description" content="Torin wiebelts awesome blog and portfolio"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><h1>Current Posts</h1><div class="content"><h1>Generating Webpages With a Data Driven C API 
 
 </h1><p>This site originialy used jekyll to generate a static site from markdown files; 
 however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
 I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
-data source to be used in the HTML generation phase.
+data source to be used in the HTML generation phase.  Requiring a plethora of external tools to generate html markup.  By providing a low level data driven
+native interface for webpage generation, web content can be produced from any arbitrary data source in
+a very flexible manner.  The native c interface induces more verbosity upfront but provides maximal
+flexibility and customization power.
 
-</p><p>Here is an example of how the code generation for this website looks
+</p><h2>Features
+</h2><ul><li>Data driven C interface
+</li><li>procedures for buffers and format text
+</li><li>Markdown parser
+</li><li>Cpp Syntax highlighting
+</li><li>Custom markdown function extention
 
-</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>...
+</li></ul><p>All procedures in the library have many convenience variants around the much more low-level c procedures
+When using the preprocessor macro SG_CPP additional feature such as function overloading and default values
+are provided to make programming with the library more convieant while still exposing the more low-level
+calls.  This system allows for maximal flexibility such as generating entire post archives with less than
+a dozen lines of code.  Most of the procedures in the site-generator are provide both a format version and a pointer and length 
+version for maximal flexibility 
 
-ImWeb::Directory(<span style="color:#2ecc71;">"site"</span>);
-ImWeb::BeginDocument(<span style="color:#2ecc71;">"Torin Wiebelt"</span>, <span style="color:#2ecc71;">"Torin Wiebelt's awesome blog and portfolio"</span>);
-ImWeb::Filename(<span style="color:#2ecc71;">"index.html"</span>);
-ImWeb::StyleSheet(<span style="color:#2ecc71;">"style.css"</span>);
-ImWeb::BeginBody();
-SiteHeader();
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
+sg_fmt_p(<span style="color:#2ecc71;">"paragraph with %s"</span>, <span style="color:#2ecc71;">"stuff"</span>);
+sg_fmt_a(<span style="color:#2ecc71;">"%s.html"</span>, <span style="color:#2ecc71;">"my_page"</span>);
 
-<span style="color:#f1c40f;">DIR</span> *directory = opendir(<span style="color:#2ecc71;">"posts"</span>);
-<span style="color:#3498db;">if</span> (directory != NULL) {
-    <span style="color:#3498db;">struct</span> <span style="color:#f1c40f;">dirent</span> *file;
-    <span style="color:#f1c40f;">char</span> temp[1024];
-    <span style="color:#f1c40f;">char</span> *write = temp;
-    <span style="color:#3498db;">while</span> ((file = readdir(directory))) {
-        <span style="color:#3498db;">if</span> (strcmp(<span style="color:#2ecc71;">".."</span>, file->d_name) &&
-            strcmp(<span style="color:#2ecc71;">"."</span>, file->d_name)) {
+sg_fmt_set_next_class(<span style="color:#2ecc71;">"my-div-num-%d"</span>, 9);
+sg_fmt_set_next_id(<span style="color:#2ecc71;">"id%d"</span>, 9);
+sg_begin_div();
+<span style="color:#34495e;">//...</span>
+sg_end_div();
+</pre></div><p>Both sg_fmt_set_next_class and sg_fmt_set_next_id apply to ALL other procedures in the utility.  This 
+allows a simple way to proceduraly set the classname and id of html elements.
 
-            memcpy_lit_inc_ptr(write, <span style="color:#2ecc71;">"posts/"</span>);
-            memcpy_and_increment(write, file->d_name, <span style="color:#3498db;">sizeof</span>(file->d_name));
-            write[0] = 0;
-            <span style="color:#f1c40f;">char</span> *data = ReadFileIntoMemory(temp);
-            ImWeb::BeginDiv(<span style="color:#2ecc71;">"content"</span>);
-            <span style="color:#34495e;">//ImWeb::Heading(file->d_name, 1);</span>
-            ImWeb::Markdown(data);
-            ImWeb::EndDiv();
-            ImWeb::BeginDiv(<span style="color:#2ecc71;">"seperator"</span>);
-            ImWeb::EndDiv();
-            free(data);
-            memset(temp, 0, 512);
-            write = temp;
-        }
-    }
-    closedir(directory);
-}
-ImWeb::EndBody();
-ImWeb::EndDocument();
+</p><h2>In Practice Examples
 
-...
+</h2><p>Here are some examples of the power and flexibility this tool provides for data-driven web development
+This is the entire routine that generates the homepage of this blog
 
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg::set_output_directory(<span style="color:#2ecc71;">"site"</span>);
+sg::begin_document();
+sg::add_stylesheet(<span style="color:#2ecc71;">"style.css"</span>);
+sg::fmt_h(1, <span style="color:#2ecc71;">"Current Posts"</span>);
+foreach_file_in_directory(<span style="color:#2ecc71;">"posts"</span>, [](<span style="color:#f1c40f;">FileInfo</span> file_info) {
+    <span style="color:#f1c40f;">char</span> *file_data = read_file_into_memory(file_info.path);
+    sg::begin_div(<span style="color:#2ecc71;">"content"</span>);
+    sg::markdown(file_data);
+    sg::end_div();
+});
+sg::end_document();
 
-</pre></div><p>As you can see this system is highly flexible and allows HTML codegeneration to be driven by any way the user sees fit
-And stuf of that nature i beleive that the system for stopping code blocks is currently broken
-</p></div><div class="seperator"></div><div class="content"><p>!title(Hotloading OpenGL Procedures with C preprocessor metaprograming)
-</p><p>!date(2016-01-22)
+</pre></div><p>This routine generates a responsive photogallery by simply iterating over photos in a directory
 
-</p><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
+</p><div style="background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>kate_wiebeltstuff
+
+</pre></div></div><div class="content"><p>!title</p><p>Hotloading OpenGL Procedures with C preprocessor metaprograming</p><p>!date</p><p>2016-01-22</p><h1>Hotloading OpenGL procedures with C preprocessor metaprograming
 
 </h1><p>One of the important features that I wanted when creating this new iteration of my game engine
 Was the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
@@ -114,7 +116,7 @@ procedure list as global variables in the game module
 </pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
 within the game module to the procedures that have been loaded from the platform layers coresponding dynamic
 OpenGL library.
-</p></div><div class="seperator"></div><div class="content"><h1>Writing a new Game Engine
+</p></div><div class="content"><h1>Writing a new Game Engine
 </h1><p>A year ago I started writing a 3D game engine.  Today I started writing a new 3D game engine from scratch using none of the code from the previous incardination.
 This is because the original engine which I had dubbed "Raptor" was written to be very modular and generic.
 The problem: too much effort was expended on organizing the code rather than solving the difficult technical problems involved with 3D game engine programming.
@@ -140,4 +142,4 @@ The plan is to create a small RPG style engine with a 3rd person combat system.
 </li><li>Runtime hot loading of C++ dlls
 </li><li>Asset hot reloading
 </li><li>Audio mixer
-</li></ul></div><div class="seperator"></div></body></html>
+</li></ul></div></body></html>

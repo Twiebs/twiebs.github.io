@@ -8,36 +8,37 @@ body
     text-align : center;
 }
 
+/*=====================================*/
+
 .navbar
 {
-    position : fixed;
     background-color : rgba(54,54,54,1);
     left : 0;
     top  : 0;
     width : 100%;
-    min-height : 3.0rem;
-    margin : 0;
-    margin-bottom : 3.0rem;
+
+    margin-left : 0;
+    margin-right : 0;
+    margin-top : 0;
+    
     padding : 0;
+    padding-left : 6px;
+    padding-right : 6px;
+    padding-top : 6px;
+    padding-bottom : 6px;
     box-shadow : 0 0 0 0, 0 6px 12px rgba(34, 34, 34, 0.3);
 }
 
-.navbar-item-container
-{
-    margin-top : 10px;
-    text-align : center;
-}
-
-.navbar-item
-{
-    position : relative;
+.navbar a {
+    display : inline-block;
     color : #FFF;
     font-size: 1.4rem;
+    margin-right : 22px;
     text-transform  : uppercase;
     text-decoration : none;
-    pad-top : 45px;
-    margin-right : 2.5rem;
 }
+
+/*=====================================*/
 
 .page-header
 {
@@ -51,49 +52,35 @@ body
     color : #FFF;
     
 }
-
+ 
 
 
 .content
 {
     background-color : #FFFFFF;
-    max-width : calc(100vw - 102px);
     margin : auto;
+    margin-left  : 4px;
+    margin-right : 4px;
+    margin-bottom : 15px;
+    padding : 8px;
+    padding-bottom : 20px;
+    
     top : 10px;
-    padding : 40px;
     box-shadow : 0 0 0 0, 0 12px 24px rgba(34, 34, 34, 0.2);
     text-align : left;
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 20em) {
     .content {
-        max-width : 1200px;
     }
 }
 
-.page_header
-{
-    position : absolute;
-    padding : 0;
-    left : 0;
-    top : 0;
-    width : 100vw;
-    min-height : 150px;
-    max-height : 150px;
-    margin : auto;
-    background-image : url("abstract.jpg");
-    background-size  : cover;
-    box-shadow : 0 0 0 0, 0 6px 12px rgba(34, 34, 34, 0.1);
-    text-align : center;
-    vertical-align : middle;
-
-    color : #FFF;
-    text-shadow : 1px 1px 4px rgba(34,34,34,0.6);
-    font-size : 24px;
-    font-family:"Lato",Calibri,Arial,sans-serif;
-}
-
-.seperator
-{
-    height : 15px;
+@media only screen and (min-width: 1200px) {
+    .content {
+        margin-left: auto;
+        margin-right : auto;
+        max-width : 1200px;
+        padding-left : 30px;
+        padding-right : 30px;
+    }
 }
