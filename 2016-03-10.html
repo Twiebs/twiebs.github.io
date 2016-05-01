@@ -1,10 +1,8 @@
-<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>03-10-16</title><meta name="description" content="Torin wiebelts blog"><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><h1>Generating Webpages With a Data Driven C API 
-
-</h1><p>This site originialy used jekyll to generate a static site from markdown files; 
-however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title><meta name="description" content=""><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><h1>Generating Webpages With a Data Driven C API</h1><h5>10 March, 2016</h5><p>This site originialy used jekyll to generate a static site from markdown files; 
+however,jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.
 I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrary
 data source to be used in the HTML generation phase.  Requiring a plethora of external tools to generate html markup.  By providing a low level data driven
-native interface for webpage generation, web content can be produced from any arbitrary data source in
+native interface for webpage generation,web content can be produced from any arbitrary data source in
 a very flexible manner.  The native c interface induces more verbosity upfront but provides maximal
 flexibility and customization power.
 
@@ -16,13 +14,13 @@ flexibility and customization power.
 </li><li>Custom markdown function extention
 
 </li></ul><p>All procedures in the library have many convenience variants around the much more low-level c procedures
-When using the preprocessor macro SG_CPP additional feature such as function overloading and default values
+When using the preprocessor macro additional feature such as function overloading and default values
 are provided to make programming with the library more convieant while still exposing the more low-level
 calls.  This system allows for maximal flexibility such as generating entire post archives with less than
 a dozen lines of code.  Most of the procedures in the site-generator are provide both a format version and a pointer and length 
 version for maximal flexibility 
 
-</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
+</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
 sg_fmt_p(<span style="color:#2ecc71;">"paragraph with %s"</span>, <span style="color:#2ecc71;">"stuff"</span>);
 sg_fmt_a(<span style="color:#2ecc71;">"%s.html"</span>, <span style="color:#2ecc71;">"my_page"</span>);
 
@@ -31,7 +29,7 @@ sg_fmt_set_next_id(<span style="color:#2ecc71;">"id%d"</span>, 9);
 sg_begin_div();
 <span style="color:#34495e;">//...</span>
 sg_end_div();
-</pre></div></code><p>Both sg_fmt_set_next_class and sg_fmt_set_next_id apply to ALL other procedures in the utility.  This 
+</pre></div><p>Both `sg_fmt_set_next_class</p><p>` and `sg_fmt_set_next_id</p><p>` apply to ALL other procedures in the utility.  This 
 allows a simple way to proceduraly set the classname and id of html elements.
 
 </p><h2>In Practice Examples
@@ -39,20 +37,20 @@ allows a simple way to proceduraly set the classname and id of html elements.
 </h2><p>Here are some examples of the power and flexibility this tool provides for data-driven web development
 This is the entire routine that generates the homepage of this blog
 
-</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg::set_output_directory(<span style="color:#2ecc71;">"site"</span>);
+</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>sg::set_output_directory(<span style="color:#2ecc71;">"site"</span>);
 sg::begin_document();
 sg::add_stylesheet(<span style="color:#2ecc71;">"style.css"</span>);
 sg::fmt_h(1, <span style="color:#2ecc71;">"Current Posts"</span>);
-foreach_file_in_directory(<span style="color:#2ecc71;">"posts"</span>, [](<span style="color:#f1c40f;">FileInfo</span> file_info) {
-    <span style="color:#f1c40f;">char</span> *file_data = read_file_into_memory(file_info.path);
+foreach_file_in_directory(<span style="color:#2ecc71;">"posts"</span>, [](<span style="color:#FF6239;">FileInfo</span> file_info) {
+    <span style="color:#FF6239;">char</span> *file_data = read_file_into_memory(file_info.path);
     sg::begin_div(<span style="color:#2ecc71;">"content"</span>);
     sg::markdown(file_data);
     sg::end_div();
 });
 sg::end_document();
 
-</pre></div></code><p>This routine generates a responsive photogallery by simply iterating over photos in a directory
+</pre></div><p>This routine generates a responsive photogallery by simply iterating over photos in a directory
 
-</p><code><div style="overflow-x:auto;background-color:rgba(34,34,34,1);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>kate_wiebeltstuff
+</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>kate_wiebeltstuff
 
-</pre></div></code></div></body></html>
+</pre></div></div></body></html>

@@ -2,7 +2,7 @@ body
 {
     background-color : #E8E8E8;
     font-family:"Lato",Calibri,Arial,sans-serif;
-    font-size:16px;
+    font-size:15px;
     color:rgba(34,34,34,0.8);
     margin : 0;
     text-align : center;
@@ -12,7 +12,7 @@ body
 
 .navbar
 {
-    background-color : rgba(54,54,54,1);
+    background-color : rgba(34,34,34,1);
     left : 0;
     top  : 0;
     width : 100%;
@@ -20,6 +20,7 @@ body
     margin-left : 0;
     margin-right : 0;
     margin-top : 0;
+    margin-bottom : 40px;
     
     padding : 0;
     padding-left : 6px;
@@ -34,7 +35,6 @@ body
     color : #FFF;
     font-size: 1.4rem;
     margin-right : 22px;
-    text-transform  : uppercase;
     text-decoration : none;
 }
 
@@ -53,8 +53,6 @@ body
     
 }
  
-
-
 .content
 {
     background-color : #FFFFFF;
@@ -68,6 +66,11 @@ body
     top : 10px;
     box-shadow : 0 0 0 0, 0 12px 24px rgba(34, 34, 34, 0.2);
     text-align : left;
+}
+
+.content a {
+    color:rgba(34,34,34,0.8);
+    text-decoration: none;
 }
 
 @media only screen and (min-width: 20em) {
