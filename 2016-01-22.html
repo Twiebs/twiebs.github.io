@@ -1,18 +1,6 @@
-<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title><meta name="description" content=""><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><h1>Hotloading OpenGL Procedures with C preprocessor metaprograming</h1><h5>22 January, 2016</h5><p>One of the important features that I wanted when creating this new iteration of my game engine
-Was the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiable
-as possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplished
-OpenGL function hotloading in the Venom game engine.
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title><meta name="description" content=""><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><div class="post-header"><h1>Hotloading OpenGL Procedures with C preprocessor metaprograming</h1><h5>22 January, 2016</h5></div><p>One of the important features that I wanted when creating this new iteration of my game engineWas the ablity to hotload code while the engine is still running.  I wanted this system to be as maximaly flexiableas possible.  I really wanted to be able to hotload code that contained OpenGL functions.  This is how i accomplishedOpenGL function hotloading in the Venom game engine.</p><h2>C Preprocessor Metaprograming</h2><p>The problem is that when the dll containing the game code is realoaded after compilation functions thatexist in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engineusing the same system that the game code uses to obtain them.</p><p>The opengl procedures are defined in the file opengl_procedures.hThis is a small example of what that file looks like</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>
 
-</p><h2>C Preprocessor Metaprograming
-
-</h2><p>The problem is that when the dll containing the game code is realoaded after compilation functions that
-exist in the engine's executable will not be avaible to it.  OpenGL functions are loaded in the engine
-using the same system that the game code uses to obtain them.
-
-The opengl procedures are defined in the file opengl_procedures.h
-This is a small example of what that file looks like
-
-</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">// opengl_procedures.h</span>
+<span style="color:#34495e;">// opengl_procedures.h</span>
 ...
 
 _(PFNGLGENTEXTURESPROC, glGenTextures)
@@ -26,10 +14,9 @@ _(PFNGLTEXSUBIMAGE3DPROC, glTexSubImage3D)
 ...
 
 
-</pre></div><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations where
-they are realevant
+</pre></div><p>Using the C preprocessor allows the defintions of the OpenGL functions to be pasted in locations wherethey are realevant</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>
 
-</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#3290BE;">struct</span> <span style="color:#FF6239;">EngineAPI</span>
+<span style="color:#3290BE;">struct</span> <span style="color:#FF6239;">EngineAPI</span>
 {
 <span style="color:#FFA339;">#define</span> _(sig, name) <span style="color:#FF6239;">sig</span> name;
 <span style="color:#FFA339;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
@@ -37,11 +24,9 @@ they are realevant
 };
 
 
-</pre></div><p>One very important facet of this system is that there is no differentation between how the
-OpenGL procedures are called in debug and release builds.  This is acomplished by pasting the OpenGL
-procedure list as global variables in the game module
+</pre></div><p>One very important facet of this system is that there is no differentation between how theOpenGL procedures are called in debug and release builds.  This is acomplished by pasting the OpenGLprocedure list as global variables in the game module</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>
 
-</p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre><span style="color:#34495e;">//The Games Translation Unit</span>
+<span style="color:#34495e;">//The Games Translation Unit</span>
 <span style="color:#FFA339;">#define</span> _(sig, name) <span style="color:#3290BE;">static</span> <span style="color:#FF6239;">sig</span> name;
 <span style="color:#FFA339;">#include</span> <span style="color:#2ecc71;">"opengl_procedures.h"</span>
 <span style="color:#FFA339;">#undef</span> _
@@ -54,7 +39,19 @@ procedure list as global variables in the game module
 <span style="color:#FFA339;">#undef</span> _
 }
 
-</pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functions
-within the game module to the procedures that have been loaded from the platform layers coresponding dynamic
-OpenGL library.
-</p></div></body></html>
+</pre></div><p>With this small amount of code we are able to set the function pointers of our global OpenGL functionswithin the game module to the procedures that have been loaded from the platform layers coresponding dynamicOpenGL library.</p></div><div class="content">
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = http://twiebs.github.io/2016-01-22.html;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 0; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() {  // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//torinwiebelt.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div></body></html>
