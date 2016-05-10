@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title><meta name="description" content=""><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><div class="post-header"><h1>Generating Webpages With a Data Driven C API</h1><h5>10 March, 2016</h5></div><p>This site originialy used jekyll to generate a static site from markdown files; however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrarydata source to be used in the HTML generation phase.  Requiring a plethora of external tools to generate html markup.  By providing a low level data drivennative interface for webpage generation, web content can be produced from any arbitrary data source ina very flexible manner.  The native c interface induces more verbosity upfront but provides maximalflexibility and customization power.</p><h2>Features</h2><ul><li> Data driven C interface</li><li> procedures for buffers and format text</li><li> Markdown parser</li><li> Cpp Syntax highlighting</li><li> Custom markdown function extention</li></ul><p>All procedures in the library have many convenience variants around the much more low-level c proceduresWhen using the preprocessor macro additional feature such as function overloading and default valuesare provided to make programming with the library more convieant while still exposing the more low-levelcalls.  This system allows for maximal flexibility such as generating entire post archives with less thana dozen lines of code.  Most of the procedures in the site-generator are provide both a format version and a pointer and length version for maximal flexibility </p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>
+<!DOCTYPE html><html lang="en-us"><meta charset="UTF-8"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title></title><meta name="description" content=""><link rel="stylesheet" type="text/css" href="style.css"><body><nav class="navbar"><a href="index.html">Posts</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="archive.html">Archive</a></nav><div class="content"><div class="post-header"><h1>Generating Webpages With a Data Driven C API</h1><h3>10 March, 2016</h3></div><p>This site originialy used jekyll to generate a static site from markdown files; however, jekyll requires a large quantity of dependiecens and doesn't offer the flexibility I was looking for.I decided to replace jekyll with a custom built tool for generating HTML within C++.  This allows any arbitrarydata source to be used in the HTML generation phase.  Requiring a plethora of external tools to generate html markup.  By providing a low level data drivennative interface for webpage generation, web content can be produced from any arbitrary data source ina very flexible manner.  The native c interface induces more verbosity upfront but provides maximalflexibility and customization power.</p><h2>Features</h2><ul><li> Data driven C interface</li><li> procedures for buffers and format text</li><li> Markdown parser</li><li> Cpp Syntax highlighting</li><li> Custom markdown function extention</li></ul><p>All procedures in the library have many convenience variants around the much more low-level c proceduresWhen using the preprocessor macro additional feature such as function overloading and default valuesare provided to make programming with the library more convieant while still exposing the more low-levelcalls.  This system allows for maximal flexibility such as generating entire post archives with less thana dozen lines of code.  Most of the procedures in the site-generator are provide both a format version and a pointer and length version for maximal flexibility </p><div style="overflow-x:auto;background-color:rgba(34,34,34,1.0);color : rgba(200,200,200,1);font-size : 14px;padding : 10px;"><pre>
 sg_fmt_h(1, <span style="color:#2ecc71;">"Heading %d: %s"</span>, 1, <span style="color:#2ecc71;">"Test"</span>);
 sg_fmt_p(<span style="color:#2ecc71;">"paragraph with %s"</span>, <span style="color:#2ecc71;">"stuff"</span>);
 sg_fmt_a(<span style="color:#2ecc71;">"%s.html"</span>, <span style="color:#2ecc71;">"my_page"</span>);
@@ -28,17 +28,17 @@ kate_wiebeltstuff
 <div id="disqus_thread"></div>
 <script>
 
-  var disqus_config = function () {
-    this.page.url = 'http://twiebs.github.io/2016-03-10.html';
-    this.page.identifier = 2;
-  };
+var disqus_config = function () {
+  this.page.url = 'http://twiebs.github.io/2016-03-10.html';
+  this.page.identifier = 2;
+};
 
-  (function() {  // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = '//torinwiebelt.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
+(function() {  // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = '//torinwiebelt.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
 
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
