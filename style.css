@@ -71,6 +71,8 @@ body
 .post-header a {
   text-decoration: none;
   color:rgba(34,34,34,0.8);
+  margin : 0px;
+  padding: 0px;
 }
 
 .post-header a:hover, 
