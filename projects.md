@@ -4,20 +4,21 @@ title: Projects
 permalink: /projects/
 ---
 
-## LLVM based compiler and language
+# LLVM based Compiler Frontend for Custom Language
 
-This project was started to learn the LLVM infastrucuture and
-experiment with programming language design.  The language is
-staticly typed and compiled.  It supports a very minimal feature-set
-to simplifiy the implementation of the compiler.
+A simple compiler frontend that targets LLVM.  Custom language
+is very close to C with a very minimalistic syntax for simplicty.
+
+[GitHub](https://github.com/Twiebs/compiler02)
 
 
+# TJW-OS: Kernel + Basic Operating System
 
-## TJW-OS: Kernel + Basic Operating System
+This is a very simple forever WIP kernel and operating system implemented in C and x86_64 ASM.
+Only written for long mode capiable machines.  Handles multi-processor startup, has a WIP ehci
+drive and ext2 filesystem
 
-TJW-OS is a kernel and operating system implemented in C and x86 assembly using the NASM assembler.  It is written for a x86 32bit machine. 
-
-## Venom: Game Engine and tools
+# Venom: Game Engine and tools
 
 ### Noteable Implemented Features:
 
@@ -30,7 +31,7 @@ TJW-OS is a kernel and operating system implemented in C and x86 assembly using 
   - Asset Hot-reloading
 - Procedural Generation Tools
 
-## C Site Generator
+# C Site Generator
 
 This project is used to generated the website that you are currently viewing.
 It is a small single file library that exposes a data driven C interface for generating HTML.
@@ -52,43 +53,10 @@ website.
 
 ---
 
+## Other Miscellaneous Projects
 
-## Game Jams
+[Ludum Dare 34 Entry](http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=5078)
+[Ludum Dare 34 Code](https://github.com/Twiebs/LD34)
 
-### Ludum Dare 34 
-
-Theme: Growing or Only Two Buttons
-
-Title: Ascention
-
-Tools Used:
-- Unity
-- Krita
-- Gimp
-- Audacity
-- AudioTool
-
-[Entry Link](http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=5078)
-
-
-[Github Repository](https://github.com/Twiebs/LD34)
-
-
-### Ludum Dare 33 (08/21/15 - 08/23/15)
-
-Theme: You are the monster
-
-Title: Manhattan Monstrosity
-
-Tools Used:
-  Unity,
-  Blender,
-  Photoshop,
-  Audacity
-
-
-[Entry Link](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
-
-[Github Repository](https://github.com/Twiebs/LD33/)
-
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/CgVSb" data-context="false"><a href="//imgur.com/a/CgVSb">LD33</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+[Ludum Dare 33 Entry](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
+[Ludum Dare 33 Code](https://github.com/Twiebs/LD33/)
