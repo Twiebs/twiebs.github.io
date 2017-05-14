@@ -4,59 +4,79 @@ title: Projects
 permalink: /projects/
 ---
 
+----------
+
 # LLVM based Compiler Frontend for Custom Language
 
 A simple compiler frontend that targets LLVM.  Custom language
-is very close to C with a very minimalistic syntax for simplicty.
+is C like with a very minimalistic syntax for simplicty.
 
 [GitHub](https://github.com/Twiebs/compiler02)
 
+------
 
-# TJW-OS: Kernel + Basic Operating System
+# Kernel + Basic Operating System
 
 This is a very simple forever WIP kernel and operating system implemented in C and x86_64 ASM.
-Only written for long mode capiable machines.  Handles multi-processor startup, has a WIP ehci
-drive and ext2 filesystem
+Only written for long mode capable machines.  Handles multi-processor startup, has a WIP ehci
+drive and ext2 filesystem, basic ELF loading and execution
 
-# Venom: Game Engine and tools
+[GitHub Repository](https://github.com/Twiebs/tjw_kernel)
 
-### Noteable Implemented Features:
+----
 
-- Multi-threaded task scheduling and execution
-- OpenGL Renderer
-  - Deferred Renderer
-  - Ambient Occlusion
-- Entity Management System
-- Asset Management System
-  - Asset Hot-reloading
-- Procedural Generation Tools
+# Practice Tracking Tool
 
-# C Site Generator
+This is a tool to track programming research and practice topics.
+It will have a scheduling feature that reschedules already completed
+topics for review based on several metrics.
 
-This project is used to generated the website that you are currently viewing.
-It is a small single file library that exposes a data driven C interface for generating HTML.
-The system becomes incredibly flexible and powerfull when used with compositing functions together
-to generate webpages.  This data driven interface allows html generation based on any arbitrary data source.
+![Screenshot Image]({{ site.url }}/images/practice_tracking_tool.png)
 
-### Features
-- Data driven immediate mode interface
-- Standard HTML tag generation 
-- Incremental Markdown parser 
-	- Custom markdown procedure call syntax
-- C/C++ syntax highlighting
-
-You can check out an example of how this tool is used by taking a look at the source code used for this
-website.
-
-[This blogs source code](http://github.com/twiebs)
-[site_generator.h](http://github.com/twiebs/single-file-libraries/site_generator.h)
+[Github Repository](https://github.com/Twiebs/practice_tracking_tool)
 
 ---
 
-## Other Miscellaneous Projects
+# Game Engine and tools
 
-[Ludum Dare 34 Entry](http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=5078)
-[Ludum Dare 34 Code](https://github.com/Twiebs/LD34)
+This is a forever WIP Game Engine and set of acompaning tools.  Has a OpenGL
+renderer with a deferred rendering pipeline with SSAO.  Asset managment system
+with asynchronous loading and hot-loading of modified assets.  Basic GKJ collision
+system.  Proceduraly generated infinate terrain.  
 
-[Ludum Dare 33 Entry](http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=50789)
-[Ludum Dare 33 Code](https://github.com/Twiebs/LD33/)
+[GitHub](https://github.com/Twiebs/venom)
+
+[A different incarnation](https://github.com/Twiebs/Raptor)
+
+-----
+
+# LLDB Based Debugging Frontend and custom linux debugger library
+
+A basic attempt at creating a debugging frontend for LLDB.  Also has 
+a simple custom debugging library for linux systems called libdb.
+
+![Screenshot]({{ site.url }}/images/lldb_frontend.png)
+
+[GitHub Repository](https://github.com/Twiebs/debugger)
+
+---
+
+# C Site Generator
+
+This project is used to generate a different incarnation of this blog and portfolio using
+a simple data driven interface for C to generate the HTML and javascript.  Supported emiiting
+common HTML tags, a internal markdown parser html converter, very simple  internal C/C++ parser for syntax
+highlighting. 
+
+
+[site_generator.h](http://github.com/twiebs/site_generator/site_generator.h)
+
+-----
+
+# Basic Logic Gate Simulator
+
+A very simple tool for creating basic logic gate diagrams
+
+![Screenshot]({{ site.url }}/images/hardware_simulator.png)
+
+[GitHub Repository](https://github.com/Twiebs/hardware_simulator)
