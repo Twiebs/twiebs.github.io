@@ -11,7 +11,11 @@ permalink: /projects/
 A simple compiler frontend that targets LLVM.  Custom language
 is C like with a very minimalistic syntax for simplicty.
 
-[GitHub](https://github.com/Twiebs/compiler02)
+This is a screenshot of an example real-time software rasterizer wrriten in the language.  The
+code that generated the following output can be found [here](https://github.com/Twiebs/compiler02/blob/master/examples/software_rasterizer.src)
+
+![Screenshot Image]({{ site.url }}/images/software_rasterizer.png)
+Here is the [GitHub Repository](https://github.com/Twiebs/compiler02) for the compiler
 
 ------
 
